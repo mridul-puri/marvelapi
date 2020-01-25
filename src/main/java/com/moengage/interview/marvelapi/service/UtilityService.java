@@ -20,6 +20,7 @@ import com.moengage.interview.marvelapi.model.Characters.CharacterDataWrapper;
 import com.moengage.interview.marvelapi.model.Events.Event;
 import com.moengage.interview.marvelapi.model.Events.EventDataContainer;
 import com.moengage.interview.marvelapi.model.Events.EventDataWrapper;
+import com.moengage.interview.marvelapi.model.Series.EventList;
 import com.moengage.interview.marvelapi.model.Series.Series;
 import com.moengage.interview.marvelapi.model.Series.SeriesDataContainer;
 import com.moengage.interview.marvelapi.model.Series.SeriesDataWrapper;
@@ -94,7 +95,7 @@ public class UtilityService {
 		return listOfCharacterIDs;	
 	}
 	
-	public ArrayList<Optional<Integer>> getAllSeries(SeriesDataWrapper seriesWrapper)
+	public ArrayList<Optional<Integer>> getAllSeriesIDs(SeriesDataWrapper seriesWrapper)
 	{
 		SeriesDataContainer seriesContainer = seriesWrapper.getData().orElseGet(null);
 	    Optional<ArrayList<Series>> listOfSeries = seriesContainer.getResults();
@@ -105,17 +106,29 @@ public class UtilityService {
 	    return listOfSeriesIDs;
 	}
 	
-	public ArrayList<Optional<Integer>> getRandomSeriesIDs(ArrayList<Optional<Integer>> ids)
+	public ArrayList<Optional<EventList>> getAllSeriesEvents(SeriesDataWrapper seriesWrapper)
 	{
-		Random rand = new Random(); 
-		  
+		SeriesDataContainer seriesContainer = seriesWrapper.getData().orElseGet(null);
+	    Optional<ArrayList<Series>> listOfSeries = seriesContainer.getResults();
+	    ArrayList<Optional<EventList>> listOfSeriesEvents = new ArrayList<Optional<EventList>>();
+	    
+	    for(int i=0;i<listOfSeries.get().size();i++)
+	    	listOfSeriesEvents.add(listOfSeries.get().get(i).getEvents());
+	    return listOfSeriesEvents;
+	}
+	
+	public ArrayList<Optional<Integer>> getRandomSeriesIDs(ArrayList<Optional<Integer>> ids,ArrayList<Optional<EventList>> events)
+	{
+		Random rand = new Random();
+		int count = 0;  
         ArrayList<Optional<Integer>> newList = new ArrayList<>(); 
-        for (int i=0;i<2;i++) { 
+        while(count<2) { 
   
             int randomIndex = rand.nextInt(ids.size()); 
-  
+            if(events.get(randomIndex).get().getAvailable().orElse(0) == 0)
+            	continue;
             newList.add(ids.get(randomIndex)); 
-
+            count += 1;
             ids.remove(randomIndex); 
         } 
         return newList; 
@@ -123,12 +136,14 @@ public class UtilityService {
 	
 	public ArrayList<Optional<Integer>> getAllEvents(EventDataWrapper wrapper)
 	{
-		EventDataContainer eventContainer = wrapper.getData().orElse(null);
+		EventDataContainer eventContainer = wrapper.getData().orElseGet(null);
     	Optional<ArrayList<Event>> listOfEvents = eventContainer.getResults();
 		ArrayList<Optional<Integer>> listOfEventIDs = new ArrayList<Optional<Integer>>();
-		for(int i=0;i<listOfEvents.get().size();i++)
+		int count = 0;
+		for(int i=0;i<listOfEvents.get().size() && count<10;i++)
 		{
 			listOfEventIDs.add(listOfEvents.get().get(i).getId());
+			count += 1;
 		}
 		return listOfEventIDs;
 		

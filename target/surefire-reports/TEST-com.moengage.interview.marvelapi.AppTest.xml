@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.moengage.interview.marvelapi.AppTest" time="0.003" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="com.moengage.interview.marvelapi.AppTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_221\jre\bin"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\purim.CORPDOM\Desktop\Personal\Switch prep\Interviews\Went\MoEngage\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3652411115397924980.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\purim.CORPDOM\Desktop\Personal\Switch prep\Interviews\Went\MoEngage\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1060906975206735918.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_221\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_221/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_221/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_221/bin/../jre/lib/amd64;C:\apache-maven-3.6.3\bin;C:\Program Files\Java\jdk1.8.0_221\bin;c:\app\purim\product\11.2.0\dbhome_3\bin;c:\apache-ant-1.8.3\bin;C:\Gradle\gradle-5.5.1\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;C:\WINDOWS\system32\windowspowershell\v1.0\;c:\program files\microsoft sql server\client sdk\odbc\130\tools\binn\;c:\program files (x86)\microsoft sql server\140\tools\binn\;c:\program files\microsoft sql server\140\tools\binn\;c:\program files\microsoft sql server\140\dts\binn\;c:\program files (x86)\microsoft sql server\client sdk\odbc\130\tools\binn\;c:\program files (x86)\microsoft sql server\140\dts\binn\;c:\program files (x86)\microsoft sql server\140\tools\binn\managementstudio\;c:\program files\perforce\;c:\program files\putty\;c:\program files\git\cmd;c:\windows\system32;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;C:\WINDOWS\system32\windowspowershell\v1.0\;c:\windows\system32;C:\Users\purim.CORPDOM\AppData\Roaming\npm;C:\Program Files\nodejs\;C:\Users\purim.CORPDOM\.m2;C:\Program Files\Git\cmd;C:\Users\purim.CORPDOM\AppData\Local\Microsoft\WindowsApps;C:\Users\purim.CORPDOM\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\purim.CORPDOM\AppData\Roaming\npm;C:\Users\purim.CORPDOM\AppData\Local\GitHubDesktop\bin;C:\WINDOWS\system32;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -61,5 +61,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.moengage.interview.marvelapi.AppTest" name="testApp" time="0.003"/>
+  <testcase classname="com.moengage.interview.marvelapi.AppTest" name="testApp" time="0.002"/>
 </testsuite>

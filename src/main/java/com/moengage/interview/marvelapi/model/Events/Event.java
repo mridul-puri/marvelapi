@@ -25,7 +25,7 @@ public class Event {
 	Optional<SeriesList> series;
 	Optional<CharacterList> characters;
 	Optional<CreatorList> creators;
-	Optional<EventSummary> optional;
+	Optional<EventSummary> next;
 	Optional<EventSummary> previous;
 	public Optional<Integer> getId() {
 		return id;
@@ -111,11 +111,11 @@ public class Event {
 	public void setCreators(Optional<CreatorList> creators) {
 		this.creators = creators;
 	}
-	public Optional<EventSummary> getOptional() {
-		return optional;
+	public Optional<EventSummary> getNext() {
+		return next;
 	}
-	public void setOptional(Optional<EventSummary> optional) {
-		this.optional = optional;
+	public void setNext(Optional<EventSummary> next) {
+		this.next = next;
 	}
 	public Optional<EventSummary> getPrevious() {
 		return previous;

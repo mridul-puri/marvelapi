@@ -18,6 +18,7 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.moengage.interview.marvelapi.constants.configValues;
 import com.moengage.interview.marvelapi.model.Characters.CharacterDataWrapper;
 import com.moengage.interview.marvelapi.model.Events.EventDataWrapper;
+import com.moengage.interview.marvelapi.model.Series.EventList;
 import com.moengage.interview.marvelapi.model.Series.SeriesDataWrapper;
 import com.moengage.interview.marvelapi.model.Stories.StoryDataWrapper;
 
@@ -99,8 +100,9 @@ public class MarvelService {
 		ObjectMapper mapper = null;
 		UtilityService util = new UtilityService();
 		
-		ArrayList<Optional<Integer>> listOfSeriesIDs = util.getAllSeries(seriesWrapper);
-	    ArrayList<Optional<Integer>> randomeIDs = util.getRandomSeriesIDs(listOfSeriesIDs);
+		ArrayList<Optional<Integer>> listOfSeriesIDs = util.getAllSeriesIDs(seriesWrapper);
+		ArrayList<Optional<EventList>> listOfSeriesEvents = util.getAllSeriesEvents(seriesWrapper);
+	    ArrayList<Optional<Integer>> randomeIDs = util.getRandomSeriesIDs(listOfSeriesIDs,listOfSeriesEvents);
 	    
 	    ArrayList<Integer> tempList = new ArrayList<Integer>();
 		for(int i=0;i<randomeIDs.size();i++)
@@ -109,8 +111,9 @@ public class MarvelService {
 			if(flag)
 				tempList.add(randomeIDs.get(i).get());
 		}
+		
 	    String seriesids = tempList.stream().map(String::valueOf).collect(Collectors.joining(","));
-	    
+	   
 	    //GET EVENTS
 	    HttpGet eventRequest = new HttpGet("https://gateway.marvel.com:443/v1/public/events?series="+seriesids+"&ts="+timestamp+"&apikey="+apiKey+"&hash="+hash);
 	    try (CloseableHttpResponse response = httpClient.execute(eventRequest)) 
@@ -149,7 +152,7 @@ public class MarvelService {
 	        	mapper.registerModule(new Jdk8Module());
 	        	characterWrapper = mapper.readValue(response.getEntity().getContent(), CharacterDataWrapper.class);
 	        	String prettyJsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(characterWrapper);
-	        	writer.println("\n\nOUTPUT FOR TEST API 2 :- ");
+	        	writer.println("OUTPUT FOR TEST API 2 :- ");
 	        	writer.println("\n\n"+prettyJsonString);
 	        }
 	    }
@@ -190,7 +193,7 @@ public class MarvelService {
 	        	mapper.registerModule(new Jdk8Module());
 	        	storyWrapper = mapper.readValue(response.getEntity().getContent(), StoryDataWrapper.class);
 	        	String prettyJsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(storyWrapper);
-	        	writer.println("\n\nOUTPUT FOR TEST API 3 :- ");
+	        	writer.println("OUTPUT FOR TEST API 3 :- ");
 	        	writer.printf("\n\n"+prettyJsonString);
 	        }
 	    }
